@@ -9,13 +9,12 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
 import logo from "../assets/Logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+// const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function Navber() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -36,7 +35,14 @@ function Navber() {
     setAnchorElUser(null);
   };
 
-  const { user } = UseAuth();
+  const { user, signOutUser } = UseAuth();
+
+  // sign out user!
+  const handelSignOutUser = () => {
+    signOutUser().then((res) => {
+      console.log(res);
+    });
+  };
 
   return (
     <AppBar className="bg-black text-white" position="static">
@@ -129,22 +135,29 @@ function Navber() {
           </Box>
           <Box sx={{ flexGrow: 0 }}>
             <div className="flex items-center justify-center sm:gap-6 gap-1">
-              <div className="flex items-center">
-                <div>
-                  <Link className="mr-2" to="/register">
-                    Register
-                  </Link>{" "}
+              {!user && (
+                <div className="flex items-center">
+                  <div>
+                    <Link className="mr-2" to="/register">
+                      Register
+                    </Link>{" "}
+                  </div>
+                  / <FaUserCircle className="ml-2" />{" "}
+                  <Link to="/signIn" className="ml-2">
+                    Sign In
+                  </Link>
                 </div>
-                / <FaUserCircle className="ml-2" />{" "}
-                <Link to="/signIn" className="ml-2">
-                  Sign In
-                </Link>
-              </div>
+              )}
               <div>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                     {user ? (
-                      <img src={user?.photoURL} alt="" referrerPolicy="no-referrer" />
+                      <img
+                        className="w-12 rounded-full"
+                        src={user?.photoURL}
+                        title={user?.displayName}
+                        referrerPolicy="no-referrer"
+                      />
                     ) : (
                       <Avatar
                         alt="Remy Sharp"
@@ -169,13 +182,9 @@ function Navber() {
                   open={Boolean(anchorElUser)}
                   onClose={handleCloseUserMenu}
                 >
-                  {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                      <Typography sx={{ textAlign: "center" }}>
-                        {setting}
-                      </Typography>
-                    </MenuItem>
-                  ))}
+                  <div className="flex flex-col gap-5  px-8 py-2">
+                    <Link onClick={handelSignOutUser}>Log Out</Link>
+                  </div>
                 </Menu>
               </div>
             </div>

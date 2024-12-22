@@ -1,17 +1,56 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import UseAuth from "../../Hooks/UseAuth";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const { signInUser, singWithGoogle } = UseAuth();
+  const navigate = useNavigate();
+
+  // sign in with email and password
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    // create user
+    signInUser(email, password)
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          toast.success("Sign In Successfully!");
+        }
+        navigate("/");
+      })
+      .catch((err) => {
+        if (err) {
+          toast.error(err.message);
+        }
+      });
+  };
+
+  // google sign up!
+  const handelGoolgeSubmit = () => {
+    singWithGoogle().then((resutl) => {
+      console.log(resutl);
+      navigate('/')
+    });
+  };
+
   return (
     <div className="border max-w-3xl mx-auto rounded-xl">
       <h2 className="text-center font-bold text-5xl pt-4">Sign In Now!</h2>
       <div className="divider px-6">or</div>
       <div className="form-control px-6 mt-6">
-        <button className="btn bg-white border hover:bg-white">
+        <button
+          onClick={handelGoolgeSubmit}
+          className="btn bg-white border hover:bg-white"
+        >
           <FcGoogle className="text-2xl"></FcGoogle> Sign In With Google
         </button>
       </div>
-      <form className="card-body">
+      <form onSubmit={handelSubmit} className="card-body">
         <div className="form-control">
           <label className="label">
             <span className="label-text">email</span>

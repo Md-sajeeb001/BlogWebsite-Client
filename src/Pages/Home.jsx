@@ -1,10 +1,9 @@
-import { Button } from "@mui/material";
+import Banner from "../Components/Banner";
 
 const Home = () => {
     return (
         <div>
-            <h2>home</h2>
-            <Button variant="contained">test</Button>
+           <Banner></Banner>
         </div>
     );
 };
