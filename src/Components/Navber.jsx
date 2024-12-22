@@ -10,8 +10,10 @@ import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import { Link } from "react-router-dom";
 import logo from "../assets/Logo.png";
+import { FaUserCircle } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import UseAuth from "../Hooks/UseAuth";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -34,8 +36,10 @@ function Navber() {
     setAnchorElUser(null);
   };
 
+  const { user } = UseAuth();
+
   return (
-    <AppBar position="static">
+    <AppBar className="bg-black text-white" position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -53,7 +57,9 @@ function Navber() {
               textDecoration: "none",
             }}
           >
-            <img className="w-24" src={logo} alt="logo" />
+            <Link to="/">
+              <img className="w-24" src={logo} alt="logo" />
+            </Link>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -83,11 +89,6 @@ function Navber() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" } }}
             >
-              {/* {pages?.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography sx={{ textAlign: "center" }}>{page}</Typography>
-                </MenuItem>
-              ))} */}
               <div className="flex flex-col gap-5  px-10 py-4">
                 <Link to="/">Home</Link>
                 <Link to="/addBlog">Add Blog</Link>
@@ -113,18 +114,11 @@ function Navber() {
               textDecoration: "none",
             }}
           >
-            <img className="w-24" src={logo} alt="logo" />
+            <Link to="/">
+              <img className="w-24" src={logo} alt="logo" />
+            </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {/* {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))} */}
             <div className="gap-4 space-x-8">
               <Link to="/">Home</Link>
               <Link to="/addBlog">Add Blog</Link>
@@ -134,35 +128,57 @@ function Navber() {
             </div>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: "center" }}>
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            <div className="flex items-center justify-center sm:gap-6 gap-1">
+              <div className="flex items-center">
+                <div>
+                  <Link className="mr-2" to="/register">
+                    Register
+                  </Link>{" "}
+                </div>
+                / <FaUserCircle className="ml-2" />{" "}
+                <Link to="/signIn" className="ml-2">
+                  Sign In
+                </Link>
+              </div>
+              <div>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                    {user ? (
+                      <img src={user?.photoURL} alt="" referrerPolicy="no-referrer" />
+                    ) : (
+                      <Avatar
+                        alt="Remy Sharp"
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    )}
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: "45px" }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}
+                >
+                  {settings.map((setting) => (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Typography sx={{ textAlign: "center" }}>
+                        {setting}
+                      </Typography>
+                    </MenuItem>
+                  ))}
+                </Menu>
+              </div>
+            </div>
           </Box>
         </Toolbar>
       </Container>
