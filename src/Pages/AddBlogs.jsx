@@ -5,10 +5,13 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import UseAuth from "../Hooks/UseAuth";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const AddBlogs = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = UseAuth();
+  const navigate = useNavigate();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -21,8 +24,6 @@ const AddBlogs = () => {
     const blogUrl = form.blogUrl.value;
     const author = form.author.value;
     const authorUrl = form.authorUrl.value;
-    const publishDate = startDate;
-    console.log(startDate);
 
     const addBlog = {
       email,
@@ -33,7 +34,7 @@ const AddBlogs = () => {
       blogUrl,
       author,
       authorUrl,
-      publishDate,
+      deadline: startDate,
     };
     console.log(addBlog);
 
@@ -42,14 +43,19 @@ const AddBlogs = () => {
         `${import.meta.env.VITE_API_URL}/blogs`,
         addBlog
       );
-      console.log(data);
+      if (data) {
+        toast.success("Blog Added Successfully!");
+      }
+      navigate("/");
     } catch (err) {
-      console.log(err.message);
+      if (err) {
+        toast.error(err.message);
+      }
     }
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-4xl mx-auto shrink-0 shadow-2xl">
+    <div className="card bg-base-100 w-full max-w-4xl mx-auto border border-slate-100 ">
       <h2 className="text-center font-bold text-5xl pt-4">Add A Blog.</h2>
       <form onSubmit={handelSubmit} className="card-body">
         <div className="form-control w-full">
@@ -183,7 +189,9 @@ const AddBlogs = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button className="btn">Add Blog</button>
+          <button className="btn bg-blue-600 text-white hover:bg-blue-700">
+            Add Blog
+          </button>
         </div>
       </form>
     </div>

@@ -2,8 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import WishListTabel from "../Components/WishListTabel";
 import UseAuth from "../Hooks/UseAuth";
+// import { useParams } from "react-router-dom";
+
+// import UseAuth from "../Hooks/UseAuth";
 
 const WishList = () => {
+  // const { id } = useParams();
+
   const [wishlist, setWishlist] = useState(null);
   const { user } = UseAuth();
 
@@ -11,23 +16,28 @@ const WishList = () => {
     const fetchAllwishlist = async () => {
       try {
         const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/wishlists/${user?.email}`
+          `${import.meta.env.VITE_API_URL}/wishlists`
         );
+
+        // const remainigBlog = wishlist?.filter(blog=> console.log(blog))
+        console.log(data);
         setWishlist(data);
       } catch (err) {
         console.log(err);
       }
     };
     fetchAllwishlist();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
+  console.log(wishlist);
 
   return (
     <section className="container px-4 mx-auto my-12">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">Wishlist</h2>
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-          {wishlist?.length} Wishlisted
+          {wishlist?.length} My Wishlisted
         </span>
       </div>
 
@@ -43,7 +53,7 @@ const WishList = () => {
                       className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
                       <div className="flex items-center gap-x-3">
-                        <span>Title</span>
+                        <span>author</span>
                       </div>
                     </th>
                     <th
@@ -59,15 +69,8 @@ const WishList = () => {
                       scope="col"
                       className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
                     >
-                      <span>Deadline</span>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
                       <button className="flex items-center gap-x-2">
-                        <span>Price</span>
+                        <span>title</span>
                       </button>
                     </th>
 
@@ -78,13 +81,6 @@ const WishList = () => {
                       Category
                     </th>
 
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Status
-                    </th>
-
                     <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
                       Actions
                     </th>
@@ -92,7 +88,12 @@ const WishList = () => {
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200 ">
                   {wishlist?.map((wish) => (
-                    <WishListTabel key={wish._id} wish={wish} />
+                    <WishListTabel
+                      key={wish._id}
+                      wish={wish}
+                      wishlist={wishlist}
+                      setWishlist={setWishlist}
+                    />
                   ))}
                 </tbody>
               </table>

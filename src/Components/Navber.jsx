@@ -97,10 +97,16 @@ function Navber() {
             >
               <div className="flex flex-col gap-5  px-10 py-4">
                 <Link to="/">Home</Link>
-                <Link to="/addBlog">Add Blog</Link>
                 <Link to="/allBlogs">All blogs</Link>
                 <Link to="/featured">Featured Blogs</Link>
-                <Link to="/wishlist">Wishlist</Link>
+                <div>
+                  {user && (
+                    <div>
+                      <Link to="/addBlog">Add Blog</Link>
+                      <Link to="/wishlist">Wishlist</Link>
+                    </div>
+                  )}
+                </div>
               </div>
             </Menu>
           </Box>
@@ -125,12 +131,18 @@ function Navber() {
             </Link>
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            <div className="gap-4 space-x-8">
+            <div className="flex items-center space-x-8">
               <Link to="/">Home</Link>
-              <Link to="/addBlog">Add Blog</Link>
-              <Link to="/allBlogs">All blogs</Link>
               <Link to="/featured">Featured Blogs</Link>
-              <Link to="/wishlist">Wishlist</Link>
+              <Link to="/allBlogs">All blogs</Link>
+              <div>
+                {user && (
+                  <div className=" space-x-8">
+                    <Link to="/addBlog">Add Blog</Link>
+                    <Link to="/wishlist">Wishlist</Link>
+                  </div>
+                )}
+              </div>
             </div>
           </Box>
           <Box sx={{ flexGrow: 0 }}>

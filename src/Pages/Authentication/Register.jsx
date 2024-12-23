@@ -75,8 +75,7 @@ const Register = () => {
   return (
     <div className="border max-w-5xl mx-auto rounded-xl">
       <h2 className="text-center font-bold text-5xl pt-4">Register Now!</h2>
-      <div className="divider px-6">or</div>
-      <div className="form-control px-6 mt-6">
+      <div className="form-control px-8 mt-6">
         <button
           onClick={handelGoolgeSubmit}
           className="btn bg-white border hover:bg-white"
@@ -84,6 +83,7 @@ const Register = () => {
           <FcGoogle className="text-2xl"></FcGoogle> Sign Up With Google
         </button>
       </div>
+      <div className="divider px-8">or</div>
       <div className="w-full sm:flex items-center justify-center gap-8">
         <div className="w-1/2 ">
           <Lottie className="w-full" animationData={cycelAnimi}></Lottie>
