@@ -2,13 +2,13 @@ import axios from "axios";
 // import { format } from "date-fns";
 // import { format } from "date-fns";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import UseAuth from "../Hooks/UseAuth";
 
 const BlogDetails = () => {
   const { id } = useParams();
-  console.log(id);
-
   const [blog, setBlogs] = useState(null);
+  const { user } = UseAuth();
 
   useEffect(() => {
     const fetchAllBlogs = async () => {
@@ -34,6 +34,7 @@ const BlogDetails = () => {
     blogUrl,
     longDescription,
     shortdescription,
+    _id,
   } = blog || {};
 
   return (
@@ -43,7 +44,12 @@ const BlogDetails = () => {
           <img src={blogUrl} className="w-full rounded-lg" />
           <form>
             <div className="w-full border-2 border-blue-500 outline-none  p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
-              <textarea className="w-full px-5 py-4 outline-none " placeholder="comment here" cols="80" rows="7"></textarea>
+              <textarea
+                className="w-full px-5 py-4 outline-none "
+                placeholder="comment here"
+                cols="80"
+                rows="7"
+              ></textarea>
             </div>
             <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
               Comment
@@ -55,7 +61,11 @@ const BlogDetails = () => {
             <h1 className="text-5xl font-bold">{title}</h1>
             <div className="pt-4 flex items-center justify-between">
               <div className="w-14 h-14 gap-4">
-                <img className="w-full h-full rounded-full" src={authorUrl} alt="" />
+                <img
+                  className="w-full h-full rounded-full"
+                  src={authorUrl}
+                  alt=""
+                />
                 {/* <span>{format(new Date(deadline), "P")}</span> */}
                 <p className="text-xs pb-4">{email}</p>
               </div>
@@ -68,7 +78,21 @@ const BlogDetails = () => {
               <p className="mt-6 text-xs">{shortdescription}</p>
               <p className="pt-6">{longDescription}</p>
             </div>
-            <button className="btn btn-primary">Get Started</button>
+            {user ? (
+              <Link
+                to={`/updateBlog/${_id}`}
+                className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4"
+              >
+                Update
+              </Link>
+            ) : (
+              <Link
+                to="/signIn"
+                className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4"
+              >
+                Update
+              </Link>
+            )}
           </div>
         </div>
       </div>

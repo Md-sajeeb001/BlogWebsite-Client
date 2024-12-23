@@ -8,6 +8,7 @@ import AllJobs from "../Pages/AllBlogs";
 import WishList from "../Pages/WishList";
 import BlogDetails from "../Pages/BlogDetails";
 import PrivetRoute from "../Privet/PrivetRoute";
+import UpdateBlog from "../Pages/UpdateBlog";
 
 const router = createBrowserRouter([
   {
@@ -48,9 +49,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogDetails/:id",
+        element: <BlogDetails></BlogDetails>,
+      },
+      {
+        path: "/updateBlog/:id",
         element: (
           <PrivetRoute>
-            <BlogDetails></BlogDetails>
+            <UpdateBlog></UpdateBlog>
           </PrivetRoute>
         ),
       },

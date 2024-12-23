@@ -25,7 +25,6 @@ const AllBlogs = () => {
       }
     };
     fetchAllBlogs();
-    setFilter("");
   }, [filter, search]);
 
   console.log(blogs);
