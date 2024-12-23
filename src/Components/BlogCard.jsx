@@ -23,7 +23,7 @@ const BlogCard = ({ blog }) => {
   const { user } = UseAuth();
 
   const newWishlist = {
-    jobId: _id,
+    blogId: _id,
     shortdes: shortdescription,
     blogURL: blogUrl,
     blogTitle: title,
@@ -54,7 +54,7 @@ const BlogCard = ({ blog }) => {
   };
 
   return (
-    <div className="card card-compact bg-base-100 w-96 shadow-xl">
+    <div className="card card-compact bg-base-100 shadow-sm">
       <figure className="w-full h-[300px]">
         <img className="w-full h-full object-cover" src={blogUrl} />
       </figure>

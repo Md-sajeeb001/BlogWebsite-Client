@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-        <div>
+        <div className="w-full border">
             <h2>footer</h2>            
         </div>
     );

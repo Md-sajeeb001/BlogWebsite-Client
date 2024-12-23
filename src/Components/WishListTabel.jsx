@@ -5,7 +5,8 @@ import { BiMessageDetail } from "react-icons/bi";
 import { GoTrash } from "react-icons/go";
 /* eslint-disable react/prop-types */
 const WishListTabel = ({ wish, setWishlist, wishlist }) => {
-  const { _id, blogTitle, blogCategory, blogEmail, blogAuthor , jobId} = wish || {};
+  const { _id, blogTitle, blogCategory, blogEmail, blogAuthor, blogId } =
+    wish || {};
 
   const handelRemove = async (id) => {
     try {
@@ -63,7 +64,7 @@ const WishListTabel = ({ wish, setWishlist, wishlist }) => {
       </td>
       <td className="px-4 py-4 text-sm whitespace-nowrap">
         <div className="flex items-center gap-x-6">
-          <Link to={`/blogDetails/${jobId}`}>
+          <Link to={`/blogDetails/${blogId}`}>
             <button className="text-lg disabled:cursor-not-allowed text-gray-500 transition-colors duration-200 hover:text-blue-500 focus:outline-none">
               <BiMessageDetail></BiMessageDetail>
             </button>

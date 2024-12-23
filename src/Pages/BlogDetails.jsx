@@ -37,23 +37,37 @@ const BlogDetails = () => {
     _id,
   } = blog || {};
 
+  const handelSubmit=(e)=>{
+    e.preventDefault();
+    const form = e.target;
+    const textArea = form.textArea.value;
+    console.log(textArea)
+  }
+
   return (
     <div className="hero min-h-screen ">
       <div className="flex justify-start gap-10 flex-col lg:flex-row">
         <div className="w-1/2">
           <img src={blogUrl} className="w-full rounded-lg" />
-          <form>
-            <div className="w-full border-2 border-blue-500 outline-none  p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
-              <textarea
-                className="w-full px-5 py-4 outline-none "
-                placeholder="comment here"
-                cols="80"
-                rows="7"
-              ></textarea>
-            </div>
-            <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
-              Comment
-            </button>
+          <form onSubmit={handelSubmit}>
+            {user?.email === email ? (
+              " "
+            ) : (
+              <div>
+                <div className="w-full border-2 border-blue-500 outline-none  p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
+                  <textarea
+                  name="textArea"
+                    className="w-full px-5 py-4 outline-none "
+                    placeholder="comment here"
+                    cols="80"
+                    rows="7"
+                  ></textarea>
+                </div>
+                <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
+                  Comment
+                </button>
+              </div>
+            )}
           </form>
         </div>
         <div className="w-1/2">
@@ -78,16 +92,9 @@ const BlogDetails = () => {
               <p className="mt-6 text-xs">{shortdescription}</p>
               <p className="pt-6">{longDescription}</p>
             </div>
-            {user ? (
+            {user?.email === email && (
               <Link
                 to={`/updateBlog/${_id}`}
-                className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4"
-              >
-                Update
-              </Link>
-            ) : (
-              <Link
-                to="/signIn"
                 className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4"
               >
                 Update
