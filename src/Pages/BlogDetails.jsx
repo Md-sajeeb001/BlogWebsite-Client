@@ -4,6 +4,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
+import { FaLocationArrow } from "react-icons/fa";
+import toast from "react-hot-toast";
+import Comments from "../Components/Comments";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -37,18 +40,33 @@ const BlogDetails = () => {
     _id,
   } = blog || {};
 
-  const handelSubmit=(e)=>{
+  const handelSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
     const textArea = form.textArea.value;
-    console.log(textArea)
-  }
+    const commentInfo = {
+      textArea,
+      blogId: _id,
+      userAuthor: user?.displayName,
+      userProfile: user?.photoURL,
+    };
+
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/comment`, commentInfo);
+      form.reset();
+    } catch (err) {
+      toast.error(err.message);
+    }
+  };
 
   return (
     <div className="hero min-h-screen ">
       <div className="flex justify-start gap-10 flex-col lg:flex-row">
         <div className="w-1/2">
           <img src={blogUrl} className="w-full rounded-lg" />
+          <div>
+            <Comments></Comments>
+          </div>
           <form onSubmit={handelSubmit}>
             {user?.email === email ? (
               " "
@@ -56,14 +74,13 @@ const BlogDetails = () => {
               <div>
                 <div className="w-full border-2 border-blue-500 outline-none  p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
                   <textarea
-                  name="textArea"
+                    name="textArea"
                     className="w-full px-5 py-4 outline-none "
                     placeholder="comment here"
-                    cols="80"
-                    rows="7"
                   ></textarea>
                 </div>
                 <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
+                  <FaLocationArrow className="font-bold text-lg"></FaLocationArrow>{" "}
                   Comment
                 </button>
               </div>

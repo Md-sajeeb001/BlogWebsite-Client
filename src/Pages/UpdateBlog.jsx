@@ -1,15 +1,13 @@
 import axios from "axios";
 import DatePicker from "react-datepicker";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import UseAuth from "../Hooks/UseAuth";
+import { useParams } from "react-router-dom";
 
 const UpdateBlog = () => {
   const [startDate, setStartDate] = useState(new Date());
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const { id } = useParams();
-  const { user } = UseAuth();
 
   const [blog, setBlog] = useState(null);
   useEffect(() => {
@@ -36,6 +34,7 @@ const UpdateBlog = () => {
     blogUrl,
     author,
     authorUrl,
+    // _id,
     // deadline: startDate,
   } = blog || {};
 
@@ -64,18 +63,13 @@ const UpdateBlog = () => {
     };
 
     try {
-      const { data } = await axios.put(
-        `${import.meta.env.VITE_API_URL}/blog/${id}`,
+      const { data } = await axios.patch(
+        `${import.meta.env.VITE_API_URL}/update/${id}`,
         updateBlog
       );
-      if (data) {
-        toast.success("Blog Updated Successfully!");
-      }
-      navigate("/");
+      console.log(data);
     } catch (err) {
-      if (err) {
-        toast.error(err.message);
-      }
+      console.log(err.message);
     }
   };
 

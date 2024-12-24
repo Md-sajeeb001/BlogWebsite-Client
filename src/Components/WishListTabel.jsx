@@ -5,8 +5,7 @@ import { BiMessageDetail } from "react-icons/bi";
 import { GoTrash } from "react-icons/go";
 /* eslint-disable react/prop-types */
 const WishListTabel = ({ wish, setWishlist, wishlist }) => {
-  const { _id, blogTitle, blogCategory, blogEmail, blogAuthor, blogId } =
-    wish || {};
+  const { _id, blogTitle, blogCategory, blogEmail, blogAuthor , blogId} = wish || {};
 
   const handelRemove = async (id) => {
     try {
@@ -55,7 +54,7 @@ const WishListTabel = ({ wish, setWishlist, wishlist }) => {
       </td>
 
       <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
-        {blogTitle.substring(0, 28)}.....
+        {blogTitle?.substring(0, 28)}.....
       </td>
       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
         <div className="flex items-center gap-x-2">

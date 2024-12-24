@@ -27,8 +27,6 @@ const AllBlogs = () => {
     fetchAllBlogs();
   }, [filter, search]);
 
-  console.log(blogs);
-
   return (
     <div>
       <div className="flex items-center gap-8 max-w-4xl">
