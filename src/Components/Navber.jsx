@@ -147,30 +147,19 @@ function Navber() {
               </div>
             </Box>
             <Box sx={{ flexGrow: 0 }}>
-              <div className="flex items-center justify-center sm:gap-6 gap-1">
-                {!user && (
-                  <div className="flex items-center">
-                    <div>
-                      <Link className="mr-2" to="/register">
-                        Register
-                      </Link>{" "}
-                    </div>
-                    / <FaUserCircle className="ml-2" />{" "}
-                    <Link to="/signIn" className="ml-2">
-                      Sign In
-                    </Link>
-                  </div>
-                )}
+              {user ? (
                 <div>
                   <Tooltip title="Open settings">
                     <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                       {user ? (
-                        <img
-                          className="w-12 rounded-full"
-                          src={user?.photoURL}
-                          title={user?.displayName}
-                          referrerPolicy="no-referrer"
-                        />
+                        <div className="w-12 h-12">
+                          <img
+                            className="w-full h-full rounded-full"
+                            src={user?.photoURL}
+                            title={user?.displayName}
+                            referrerPolicy="no-referrer"
+                          />
+                        </div>
                       ) : (
                         <Avatar
                           alt="Remy Sharp"
@@ -200,7 +189,26 @@ function Navber() {
                     </div>
                   </Menu>
                 </div>
-              </div>
+              ) : (
+                <div className="flex items-center">
+                  <div>
+                    <Link className="mr-2" to="/register">
+                      Register
+                    </Link>{" "}
+                  </div>
+                  / <FaUserCircle className="ml-2" />{" "}
+                  <Link to="/signIn" className="ml-2">
+                    Sign In
+                  </Link>
+                </div>
+              )}
+
+              {/* <div className="flex items-center justify-center sm:gap-6 gap-1">
+                {!user && (
+                 
+                )}
+               
+              </div> */}
             </Box>
           </Toolbar>
         </Container>

@@ -1,29 +1,31 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import WishListTabel from "../Components/WishListTabel";
 import UseAuth from "../Hooks/UseAuth";
-// import { useParams } from "react-router-dom";
-
-// import UseAuth from "../Hooks/UseAuth";
+import toast from "react-hot-toast";
+import UseAxiosInstance from "../Hooks/UseAxiosInstance";
 
 const WishList = () => {
-  // const { id } = useParams();
-
   const [wishlist, setWishlist] = useState(null);
   const { user } = UseAuth();
+  const axiosSecure = UseAxiosInstance();
 
   useEffect(() => {
     const fetchAllwishlist = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/wishlists`
-        );
+        // const { data } = await axios.get(
+        //   `${import.meta.env.VITE_API_URL}/wishlists/${user?.email}`,
+        //   { withCredentials: true }
+        // );
+        // console.log(data);
+        // setWishlist(data);
 
-        // const remainigBlog = wishlist?.filter(blog=> console.log(blog))
-        console.log(data);
+        const { data } = await axiosSecure.get(`/wishlists/${user?.email}`);
         setWishlist(data);
+        // .then((res) => setWishlist(res.data));
       } catch (err) {
-        console.log(err);
+        if (err) {
+          toast.error("An unknown error occurred while loading users");
+        }
       }
     };
     fetchAllwishlist();
@@ -37,7 +39,7 @@ const WishList = () => {
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">My Wishlist</h2>
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-          {wishlist?.length}  Wishlisted
+          {wishlist?.length} Wishlisted
         </span>
       </div>
 

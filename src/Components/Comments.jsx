@@ -26,7 +26,7 @@ const Comments = () => {
   }, [id]);
 
   return (
-    <div>
+    <div className="pt-8">
       {comments?.map((comment) => (
         <Comment key={comment._id} comment={comment}></Comment>
       ))}

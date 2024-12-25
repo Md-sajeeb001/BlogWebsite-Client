@@ -41,12 +41,14 @@ const BlogCard = ({ blog }) => {
         `${import.meta.env.VITE_API_URL}/wishlist`,
         newWishlist
       );
-      console.log(data);
+      // check the user can't edit or update her/his won blog!
+      // if (user?.email === email) {
+      //   return toast.error(`You Can't Add Your Won Blog In Wishlist`);
+      // }
       if (data) {
         toast.success("Blog Added In Your Wishlist");
       }
     } catch (err) {
-      console.log(err.message);
       if (err) {
         toast.error(err.message);
       }

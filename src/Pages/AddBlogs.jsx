@@ -78,6 +78,7 @@ const AddBlogs = () => {
               <span className="label-text">Author</span>
             </label>
             <input
+              defaultValue={user?.displayName}
               name="author"
               type="text"
               placeholder="author"
@@ -90,6 +91,7 @@ const AddBlogs = () => {
               <span className="label-text">Author Image Url</span>
             </label>
             <input
+              defaultValue={user?.photoURL}
               name="authorUrl"
               type="url"
               placeholder="author img url"

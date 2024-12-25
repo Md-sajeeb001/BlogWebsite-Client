@@ -2,11 +2,12 @@ import axios from "axios";
 import DatePicker from "react-datepicker";
 // import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const UpdateBlog = () => {
   const [startDate, setStartDate] = useState(new Date());
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
 
   const [blog, setBlog] = useState(null);
@@ -17,6 +18,7 @@ const UpdateBlog = () => {
           `${import.meta.env.VITE_API_URL}/blog/${id}`
         );
         setBlog(data);
+        // navigate("/");
       } catch (err) {
         console.log(err.message);
       }
@@ -67,9 +69,15 @@ const UpdateBlog = () => {
         `${import.meta.env.VITE_API_URL}/update/${id}`,
         updateBlog
       );
-      console.log(data);
+      if (data) {
+        toast.success("Blog Updated Successfully!");
+      }
+      form.reset();
+      navigate("/");
     } catch (err) {
-      console.log(err.message);
+      if (err) {
+        toast.error("An unknown error occurred while loading users");
+      }
     }
   };
 

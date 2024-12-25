@@ -16,7 +16,7 @@ const RecentBlogs = () => {
       } catch (err) {
         console.log(err);
         if (err) {
-          toast.error(err.message);
+          toast.error("An unknown error occurred while loading users");
         }
       }
     };
@@ -26,10 +26,15 @@ const RecentBlogs = () => {
   console.log(blogs);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">
-      {blogs?.map((blog) => (
-        <BlogCard key={blog._id} blog={blog}></BlogCard>
-      ))}
+    <div>
+      <h2 className="text-3xl font-bold text-center py-10 underline">
+        Recent Blogs
+      </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">
+        {blogs?.map((blog) => (
+          <BlogCard key={blog._id} blog={blog}></BlogCard>
+        ))}
+      </div>
     </div>
   );
 };

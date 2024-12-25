@@ -18,9 +18,8 @@ const AllBlogs = () => {
         );
         setBlogs(data);
       } catch (err) {
-        console.log(err);
         if (err) {
-          toast.error(err.message);
+          toast.error('An unknown error occurred while loading users');
         }
       }
     };
