@@ -55,6 +55,7 @@ const AuthProvider = ({ children }) => {
       if (currentUser?.email) {
         setUser(currentUser);
         const email = { email: currentUser?.email };
+
         await axios
           .post(`${import.meta.env.VITE_API_URL}/jwt`, email, {
             withCredentials: true,
@@ -73,6 +74,7 @@ const AuthProvider = ({ children }) => {
           .then((res) => {
             console.log("logout user", res.data);
             setLoading(false);
+            setUser(currentUser);
           });
       }
     });

@@ -1,17 +1,19 @@
 // import Select from "react-select";
 // import { Button } from "@mui/material";
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import UseAuth from "../Hooks/UseAuth";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import UseAxiosInstance from "../Hooks/UseAxiosInstance";
 
 const AddBlogs = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { user } = UseAuth();
   const navigate = useNavigate();
+  const axiosSeruce = UseAxiosInstance();
 
   const handelSubmit = async (e) => {
     e.preventDefault();
@@ -39,14 +41,15 @@ const AddBlogs = () => {
     console.log(addBlog);
 
     try {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/blogs`,
-        addBlog
-      );
+      // const { data } = await axios.post(
+      //   `${import.meta.env.VITE_API_URL}/blogs`,
+      //   addBlog
+      // );
+      const { data } = await axiosSeruce.post("/blogs", addBlog);
       if (data) {
         toast.success("Blog Added Successfully!");
+        navigate("/");
       }
-      navigate("/");
     } catch (err) {
       if (err) {
         toast.error(err.message);

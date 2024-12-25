@@ -22,9 +22,6 @@ const UseAxiosInstance = () => {
           signOutUser();
           navigate("/signIn");
         }
-
-        console.log(error);
-
         return Promise.reject(error);
       }
     );

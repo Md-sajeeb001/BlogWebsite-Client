@@ -7,6 +7,8 @@ import UseAuth from "../Hooks/UseAuth";
 import { FaLocationArrow } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Comments from "../Components/Comments";
+import { format } from "date-fns";
+// import { format } from "date-fns";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -28,7 +30,7 @@ const BlogDetails = () => {
   }, [id]);
 
   const {
-    // deadline,
+    deadline,
     authorUrl,
     author,
     category,
@@ -90,15 +92,19 @@ const BlogDetails = () => {
         <div className="w-1/2">
           <div className="w-full">
             <h1 className="text-5xl font-bold">{title}</h1>
-            <div className="pt-4 flex items-center justify-between">
-              <div className="w-14 h-14 gap-4">
-                <img
-                  className="w-full h-full rounded-full"
-                  src={authorUrl}
-                  alt=""
-                />
-                {/* <span>{format(new Date(deadline), "P")}</span> */}
-                <p className="text-xs pb-4">{email}</p>
+            <div className="pt-2 flex items-center justify-between">
+              <div>
+                <div className="w-14 h-14 gap-4">
+                  <img
+                    className="w-full h-full rounded-full"
+                    src={authorUrl}
+                    alt=""
+                  />
+                </div>
+                <div>
+                  <p> {format(new Date(deadline || "2024-12-12"), "PPP")}</p>
+                  <p className="text-xs">{email}</p>
+                </div>
               </div>
               <div className="">
                 <p>Authore: {author}</p>
@@ -106,8 +112,8 @@ const BlogDetails = () => {
               </div>
             </div>
             <div>
-              <p className="mt-6 text-xs">{shortdescription}</p>
-              <p className="pt-6">{longDescription}</p>
+              <p className="mt-3 text-xs">{shortdescription}</p>
+              <p className="pt-4">{longDescription}</p>
             </div>
             {user?.email === email && (
               <Link

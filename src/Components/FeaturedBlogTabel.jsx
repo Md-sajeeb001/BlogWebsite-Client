@@ -1,8 +1,10 @@
 // import { format } from "date-fns";
 
+import { format } from "date-fns";
+
 // eslint-disable-next-line react/prop-types
 const FeaturedBlogTabel = ({ fetrd }) => {
-  const { email, title, category, author } = fetrd || {};
+  const { email, title, category, author, deadline } = fetrd || {};
 
   return (
     <tr>
@@ -23,9 +25,8 @@ const FeaturedBlogTabel = ({ fetrd }) => {
       </td>
       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
         <div className="flex items-center gap-x-6">
-            {/* {format(new Date(deadline), "P")} */}
-            12/3/2024
-            </div>
+          {format(new Date(deadline), "PPP")}
+        </div>
       </td>
     </tr>
   );

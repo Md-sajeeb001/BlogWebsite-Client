@@ -3,9 +3,18 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { BiMessageDetail } from "react-icons/bi";
 import { GoTrash } from "react-icons/go";
+import { format } from "date-fns";
 /* eslint-disable react/prop-types */
 const WishListTabel = ({ wish, setWishlist, wishlist }) => {
-  const { _id, blogTitle, blogCategory, blogEmail, blogAuthor , blogId} = wish || {};
+  const {
+    _id,
+    blogTitle,
+    blogCategory,
+    blogEmail,
+    blogAuthor,
+    blogId,
+    blogDeadline,
+  } = wish || {};
 
   const handelRemove = async (id) => {
     try {
@@ -59,6 +68,11 @@ const WishListTabel = ({ wish, setWishlist, wishlist }) => {
       <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
         <div className="flex items-center gap-x-2">
           <p className={`px-3 py-l`}>{blogCategory}</p>
+        </div>
+      </td>
+      <td className="px-4 py-4 text-sm text-gray-500 whitespace-nowrap">
+        <div className="flex items-center gap-x-2">
+          <p> {format(new Date(blogDeadline || "2024-12-12"), "PPP")}</p>
         </div>
       </td>
       <td className="px-4 py-4 text-sm whitespace-nowrap">
