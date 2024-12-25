@@ -8,7 +8,6 @@ import { FaLocationArrow } from "react-icons/fa";
 import toast from "react-hot-toast";
 import Comments from "../Components/Comments";
 import { format } from "date-fns";
-// import { format } from "date-fns";
 
 const BlogDetails = () => {
   const { id } = useParams();
@@ -62,10 +61,10 @@ const BlogDetails = () => {
   };
 
   return (
-    <div className="hero min-h-screen ">
+    <div className="hero min-h-screen mt-14">
       <div className="flex justify-start gap-10 flex-col lg:flex-row">
         <div className="w-1/2">
-          <img src={blogUrl} className="w-full rounded-lg" />
+          <img src={blogUrl} className="w-full rounded-md" />
           <div>
             <Comments></Comments>
           </div>
@@ -111,10 +110,9 @@ const BlogDetails = () => {
                 <p>Category: {category}</p>
               </div>
             </div>
-            <div>
-              <p className="mt-3 text-xs">{shortdescription}</p>
-              <p className="pt-4">{longDescription}</p>
-            </div>
+
+            <div className="mt-3 text-xs">{shortdescription}</div>
+            <article className="pt-4  progress-bar">{longDescription}</article>
             {user?.email === email && (
               <Link
                 to={`/updateBlog/${_id}`}

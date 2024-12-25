@@ -58,7 +58,7 @@ const AddBlogs = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-4xl mx-auto border border-slate-100 ">
+    <div className="card bg-base-100 w-full max-w-4xl mx-auto border border-slate-100 mt-14">
       <h2 className="text-center font-bold text-5xl pt-4">Add A Blog.</h2>
       <form onSubmit={handelSubmit} className="card-body">
         <div className="form-control w-full">

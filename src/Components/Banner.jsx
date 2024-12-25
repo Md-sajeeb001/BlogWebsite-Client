@@ -4,7 +4,7 @@ import bannderImg from "../assets/banner.jpg";
 const Banner = () => {
   return (
     <div
-      className="rounded-xl"
+      className="rounded-md"
       style={{
         backgroundImage: `url(${bannderImg})`,
         height: "100vh",
@@ -12,7 +12,7 @@ const Banner = () => {
         backgroundAttachment: "fixed",
       }}
     >
-      <div className="flex flex-col items-center sm:space-y-6 space-y-3 justify-center pt-32 my-auto lg:max-w-3xl md:max-w-xl max-w-sm mx-auto text-center">
+      <div className="flex flex-col items-center sm:space-y-6 space-y-3 justify-center pt-[160px] my-auto lg:max-w-3xl md:max-w-xl max-w-sm mx-auto text-center">
         <h2 className="lg:text-5xl md:text-3xl text-xl md:font-bold lg:font-extrabold text-white leading-normal">
           We build bikes with extra care, especially for you
         </h2>

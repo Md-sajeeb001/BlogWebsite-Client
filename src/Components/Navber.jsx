@@ -13,8 +13,7 @@ import logo from "../assets/Logo.png";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
-
-// const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { motion } from "motion/react";
 
 function Navber() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -128,7 +127,17 @@ function Navber() {
               }}
             >
               <Link to="/">
-                <img className="w-24" src={logo} alt="logo" />
+                <motion.div
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.8 }}
+                  className="logo"
+                  style={{
+                    width: "100px",
+                    height: "100px",
+                  }}
+                >
+                  <img className="w-24" src={logo} alt="logo" />
+                </motion.div>
               </Link>
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

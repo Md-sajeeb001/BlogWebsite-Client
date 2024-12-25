@@ -19,7 +19,7 @@ const AllBlogs = () => {
         setBlogs(data);
       } catch (err) {
         if (err) {
-          toast.error('An unknown error occurred while loading users');
+          toast.error("An unknown error occurred while loading users");
         }
       }
     };
@@ -27,10 +27,10 @@ const AllBlogs = () => {
   }, [filter, search]);
 
   return (
-    <div>
-      <div className="flex items-center gap-8 max-w-4xl">
-        <div className="w-full flex items-center gap-5">
-          <div className="form-control w-1/2">
+    <div className="pt-10">
+      <div className="w-full">
+        <div className="w-full flex items-center justify-between gap-5">
+          <div className="w-1/2">
             <label className="label">
               <span className="label-text">Filter By Category</span>
             </label>
@@ -38,7 +38,7 @@ const AllBlogs = () => {
               onChange={(e) => setFilter(e.target.value)}
               value={filter}
               name="category"
-              className="input input-bordered"
+              className="px-6 input input-bordered py-2 p-1 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300"
               defaultValue="select your category"
             >
               <option>Mountain Biking</option>
@@ -54,20 +54,35 @@ const AllBlogs = () => {
               <option>Road Cycling</option>
             </select>
           </div>
-        </div>
-        <div className="w-full flex p-1 overflow-hidden border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
-          <input
-            className="px-6 py-2 text-gray-700 placeholder-gray-500 bg-white outline-none focus:placeholder-transparent"
-            type="text"
-            name="search"
-            placeholder="Enter Job Title"
-            aria-label="Enter Job Title"
-            onChange={(e) => setSearch(e.target.value)}
-            value={search}
-          />
-          <button className="px-1 justify-end md:px-4 py-3 text-sm font-medium tracking-wider text-gray-100 uppercase transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:bg-gray-600 focus:outline-none">
-            Search
-          </button>
+
+          <div className="w-1/2">
+            <label className="label">
+              <span className="label-text">{""}</span>
+            </label>
+            <div className="w-full  border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
+              <label className="input input-bordered flex items-center gap-2">
+                <input
+                  onChange={(e) => setSearch(e.target.value)}
+                  value={search}
+                  type="text"
+                  className="grow"
+                  placeholder="Search"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  className="h-4 w-4 opacity-70"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </label>
+            </div>
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">

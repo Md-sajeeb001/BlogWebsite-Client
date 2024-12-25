@@ -15,21 +15,27 @@ const NewsLetter = () => {
   return (
     <div className="px-6 rounded-lg py-4 mt-12 text-blue-600 bg-blue-100 max-w-2xl  mx-auto ">
       <form onSubmit={handelSubmit}>
-        <div className="form-control w-full mt-16">
-          <label className="label">
-            <span className="label-text">email</span>
-          </label>
+        <div className=" w-full mt-4">
+          <div className="flex flex-col items-center text-center text-black space-y-3">
+            <h5 className="border text-lg font-bold">
+              SIGN UP FOR OUR NEWSLETTER
+            </h5>
+            <p className="border text-base font-light pb-4">
+              Subscribe to our newsletter to stay informed about new products,
+              technologies, events, contests and much more.
+            </p>
+          </div>
           <input
             name="email"
             type="email"
-            placeholder="email"
+            placeholder="Email Address"
             className="w-full input input-bordered"
             required
           />
         </div>
-        <div className="sm:w-1/2 w-full mx-auto form-control pt-6">
+        <div className="sm:w-1/2 w-full mx-auto form-control pt-4">
           <button className="w-full btn bg-blue-600 text-white hover:bg-blue-700">
-            subscribing to our newsletter
+            subscribe
           </button>
         </div>
       </form>
