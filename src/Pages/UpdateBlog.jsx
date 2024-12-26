@@ -83,7 +83,7 @@ const UpdateBlog = () => {
   };
 
   return (
-    <div className="card bg-base-100 w-full max-w-4xl mx-auto border border-slate-100 mt-14">
+    <div className="card bg-base-100 w-full max-w-4xl mx-auto border border-slate-100 mt-16 mb-6">
       <h2 className="text-center font-bold text-5xl pt-4">Update A Blog.</h2>
       <form onSubmit={handelSubmit} className="card-body">
         <div className="form-control w-full">
@@ -100,8 +100,8 @@ const UpdateBlog = () => {
             required
           />
         </div>
-        <div className="w-full flex items-center gap-5">
-          <div className="form-control w-1/2">
+        <div className="sm:w-full sm:flex sm:justify-between sm:items-center gap-5">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">Author</span>
             </label>
@@ -114,7 +114,7 @@ const UpdateBlog = () => {
               required
             />
           </div>
-          <div className="form-control w-1/2">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">Author Image Url</span>
             </label>
@@ -129,8 +129,8 @@ const UpdateBlog = () => {
           </div>
         </div>
 
-        <div className="w-full flex items-center gap-5">
-          <div className="form-control w-1/2">
+        <div className="sm:w-full sm:flex sm:justify-between sm:items-center gap-5">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">Date</span>
             </label>
@@ -140,7 +140,7 @@ const UpdateBlog = () => {
               onChange={(date) => setStartDate(date)}
             />
           </div>
-          <div className="form-control w-1/2">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">title</span>
             </label>
@@ -155,8 +155,8 @@ const UpdateBlog = () => {
           </div>
         </div>
 
-        <div className="w-full flex items-center gap-5">
-          <div className="form-control w-1/2">
+        <div className="sm:w-full sm:flex sm:justify-between sm:items-center gap-5">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">category</span>
             </label>
@@ -178,7 +178,7 @@ const UpdateBlog = () => {
               <option>Road Cycling</option>
             </select>
           </div>
-          <div className="form-control w-1/2">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">Blog image Url</span>
             </label>
@@ -193,8 +193,8 @@ const UpdateBlog = () => {
           </div>
         </div>
 
-        <div className="w-full flex items-center gap-5">
-          <div className="form-control w-1/2">
+        <div className="sm:w-full sm:flex sm:justify-between sm:items-center gap-5">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">short description</span>
             </label>
@@ -207,7 +207,7 @@ const UpdateBlog = () => {
               required
             />
           </div>
-          <div className="form-control w-1/2">
+          <div className="form-control sm:w-1/2 w-full">
             <label className="label">
               <span className="label-text">long description</span>
             </label>

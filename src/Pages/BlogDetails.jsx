@@ -59,7 +59,7 @@ const BlogDetails = () => {
   };
 
   return (
-    <div className="hero min-h-screen mt-14">
+    <div className="hero min-h-screen mt-14 mb-8">
       <div className="lg:flex lg:justify-start lg:gap-10 flex-col lg:flex-row w-full">
         <div className="lg:w-1/2 ">
           <img src={blogUrl} className="w-full rounded-md" />
@@ -104,8 +104,8 @@ const BlogDetails = () => {
                 </div>
               </div>
               <div className="">
-                <p>Authore: {author}</p>
-                <p>Category: {category}</p>
+                <p className="text-xs font-normal sm:font-bold sm:text-lg">Authore: {author}</p>
+                <p className="text-xs font-normal sm:font-bold sm:text-lg">Category: {category}</p>
               </div>
             </div>
 

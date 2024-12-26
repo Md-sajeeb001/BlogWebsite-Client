@@ -30,7 +30,7 @@ const AllBlogs = () => {
   return (
     <div className="pt-12">
       <div className="w-full">
-        <div className="w-full flex-col-reverse sm:flex sm:items-center sm:justify-between gap-5">
+        <div className="w-full flex-col-reverse sm:flex sm:justify-between gap-5">
           <div className="sm:w-1/2 w-40">
             <label className="label">
               <span className="label-text">Filter By Category</span>
