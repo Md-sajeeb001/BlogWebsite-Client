@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import BlogCard from "../Components/BlogCard";
 import toast from "react-hot-toast";
+import LazyLoad from "react-lazyload";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState(null);
@@ -87,7 +88,9 @@ const AllBlogs = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">
         {blogs?.map((blog) => (
-          <BlogCard key={blog._id} blog={blog}></BlogCard>
+          <LazyLoad key={blog._id} height={200} once debounce={500}>
+            <BlogCard blog={blog}></BlogCard>
+          </LazyLoad>
         ))}
       </div>
     </div>

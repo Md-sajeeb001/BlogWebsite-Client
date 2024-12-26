@@ -73,7 +73,7 @@ const Register = () => {
   };
 
   return (
-    <div className="border max-w-5xl mx-auto rounded-xl">
+    <div className="border max-w-5xl mx-auto rounded-xl mt-14">
       <h2 className="text-center font-bold text-5xl pt-4">Register Now!</h2>
       <div className="form-control px-8 mt-6">
         <button

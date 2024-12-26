@@ -57,7 +57,7 @@ const BlogCard = ({ blog }) => {
       <figure className="w-full h-[300px]">
         <img className="w-full h-full object-cover" src={blogUrl} />
       </figure>
-      <div className="card-body">
+      <div className="card-body  w-full h-[300px] ">
         <p className="text-xl font-extrabold">{title}</p>
         <h2 className="card-title">{format(new Date(deadline), "PPP")}</h2>
         <p>{shortdescription}</p>

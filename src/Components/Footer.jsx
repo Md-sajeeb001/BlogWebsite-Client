@@ -1,19 +1,22 @@
-// import { Link } from "react-router-dom";
-// import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="bg-white shadow-sm">
       <hr />
-      {/* <div className="container px-6 py-8 mx-auto">
+      <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
           <div className="flex gap-2 items-center">
-            <img className="w-auto h-7" src={logo} alt="" />
-            <span>Cycling</span>
+            <div className="divider">
+              <img className="w-24" src={logo} alt="logo" />
+            </div>
+              <span>Cycling</span>
           </div>
 
           <div className="flex flex-wrap justify-center mt-6 -mx-4">
-            <Link to="/"
+            <Link
+              to="/"
               className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
@@ -63,7 +66,7 @@ const Footer = () => {
 
         <div className="flex flex-col items-center sm:flex-row sm:justify-between">
           <p className="text-sm text-gray-500 ">
-            © Copyright 2021. All Rights Reserved.
+            Copyright © 2024 SCOTT Sports SA. All Rights Reserved.
           </p>
 
           <div className="flex -mx-2">
@@ -113,7 +116,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-      </div> */}
+      </div>
     </footer>
   );
 };

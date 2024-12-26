@@ -39,7 +39,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="border max-w-3xl mx-auto rounded-xl">
+    <div className="border max-w-3xl mx-auto rounded-xl mt-14">
       <h2 className="text-center font-bold text-5xl pt-4">Sign In Now!</h2>
       <div className="divider px-6">or</div>
       <div className="form-control px-6 mt-6">
