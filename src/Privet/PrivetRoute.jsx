@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { Navigate } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
+import Loading from "../Components/Loading";
 
 const PrivetRoute = ({ children }) => {
   const { user, loading } = UseAuth();
@@ -10,7 +11,7 @@ const PrivetRoute = ({ children }) => {
   }
 
   if (loading) {
-    return <span className="loading loading-bars loading-lg"></span>;
+    return <Loading></Loading>;
   }
 
   return <Navigate to="/signIn"></Navigate>;
