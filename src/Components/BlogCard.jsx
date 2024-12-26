@@ -12,7 +12,7 @@ const BlogCard = ({ blog }) => {
     _id,
     shortdescription,
     blogUrl,
-    email,
+    // email,
     title,
     deadline,
     category,
@@ -29,7 +29,7 @@ const BlogCard = ({ blog }) => {
     blogURL: blogUrl,
     blogTitle: title,
     blogDeadline: deadline,
-    blogEmail: email,
+    blogEmail: user?.email,
     blogCategory: category,
     blogAuthor: author,
     blogAuthorUrl: authorUrl,
@@ -58,10 +58,10 @@ const BlogCard = ({ blog }) => {
       <figure className="w-full h-[300px]">
         <img className="w-full h-full object-cover" src={blogUrl} />
       </figure>
-      <div className="card-body  w-full h-[300px] ">
+      <div className="card-body  w-full lg:h-[300px] md:h-[350px] ">
         <p className="text-xl font-extrabold">{title}</p>
         <h2 className="card-title">{format(new Date(deadline), "PPP")}</h2>
-        <p>{shortdescription}</p>
+        <p className="overflow-y-scroll">{shortdescription}</p>
         <div className="flex items-center gap-4">
           <Link to={`/blogDetails/${_id}`}>
             <motion.button

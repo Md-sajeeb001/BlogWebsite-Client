@@ -22,6 +22,7 @@ const Comments = () => {
         }
       }
     };
+    setComments();
     fetchAllcomments();
   }, [id]);
 

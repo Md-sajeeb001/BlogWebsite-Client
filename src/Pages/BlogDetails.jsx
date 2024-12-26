@@ -60,8 +60,8 @@ const BlogDetails = () => {
 
   return (
     <div className="hero min-h-screen mt-14">
-      <div className="flex justify-start gap-10 flex-col lg:flex-row">
-        <div className="w-1/2">
+      <div className="lg:flex lg:justify-start lg:gap-10 flex-col lg:flex-row w-full">
+        <div className="lg:w-1/2 ">
           <img src={blogUrl} className="w-full rounded-md" />
           <div>
             <Comments></Comments>
@@ -86,9 +86,9 @@ const BlogDetails = () => {
             )}
           </form>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 pt-8 lg:pt-0">
           <div className="w-full">
-            <h1 className="text-5xl font-bold">{title}</h1>
+            <h1 className="sm:text-5xl text-3xl font-bold">{title}</h1>
             <div className="pt-2 flex items-center justify-between">
               <div>
                 <div className="w-14 h-14 gap-4">

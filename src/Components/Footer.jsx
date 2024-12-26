@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-white shadow-sm">
       <hr />
-      <div className="container px-6 py-8 mx-auto">
+      <div className="container px-3 sm:px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
           <div className="flex gap-2 items-center">
             <Link to="/">
@@ -21,58 +21,9 @@ const Footer = () => {
                 alt="logo"
               />
             </Link>
-            {/* <div className="divider">Default</div> */}
             <span>Cycling</span>
           </div>
-
-          {/* <div className="flex flex-wrap justify-center mt-6 -mx-4">
-            <Link
-              to="/"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              Home{" "}
-            </Link>
-
-            <Link
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              About{" "}
-            </Link>
-
-            <Link to=""
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              NewsLetter{" "}
-            </Link>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              Privacy{" "}
-            </a>
-
-            <a
-              href="#"
-              className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
-              aria-label="Reddit"
-            >
-              {" "}
-              Cookies{" "}
-            </a>
-          </div> */}
-
-          <div className="flex gap-5 px-10 py-4 ">
+          <div className="flex flex-wrap gap-5 px-4 sm:px-10 py-4 ">
             <Link
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
               to="/"
@@ -111,9 +62,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-
         <hr className="my-6 border-gray-200 md:my-10 " />
-
         <div className="flex flex-col items-center sm:flex-row sm:justify-between">
           <p className="text-sm text-gray-500 ">
             Copyright © 2024 SCOTT Sports SA. All Rights Reserved.

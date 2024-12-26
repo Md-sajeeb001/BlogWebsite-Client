@@ -67,7 +67,7 @@ function Navber() {
                 <motion.img
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-36 sm:px-6"
+                  className="sm:w-36 w-20 sm:px-6"
                   src={logo}
                   alt="logo"
                 />
@@ -122,9 +122,9 @@ function Navber() {
                   </NavLink>
                   <div>
                     {user && (
-                      <div>
+                      <div className="lg:flex-none flex flex-col">
                         <NavLink
-                          className="transition-colors duration-300 hover:text-black"
+                          className="transition-colors duration-300 hover:text-black pb-4"
                           to="/addBlog"
                         >
                           Add Blog
@@ -189,7 +189,7 @@ function Navber() {
                 </NavLink>
                 <div>
                   {user && (
-                    <div className=" space-x-8">
+                    <div className="space-x-8">
                       <NavLink
                         className="transition-colors duration-300 hover:text-black"
                         to="/addBlog"

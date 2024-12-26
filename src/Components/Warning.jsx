@@ -1,7 +1,7 @@
 const Warning = () => {
   return (
-    <div className="pt-12 pb-6">
-      <h2 className="text-4xl font-bold pt-4 pb-8">
+    <div className="pt-8 pb-6">
+      <h2 className="sm:text-3xl text-xl text-center underline font-bold sm:pt-4 pb-8">
         Warning of Fraudulent Offers Online
       </h2>
       <p>

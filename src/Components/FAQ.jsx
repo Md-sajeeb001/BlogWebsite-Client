@@ -1,7 +1,7 @@
 const FAQ = () => {
   return (
-    <div className="mt-14 mb-6">
-      <h2 className="text-3xl font-bold text-center pt-4 pb-8 underline underline-offset-4">
+    <div className="sm:mt-14 mt-8 sm:mb-6">
+      <h2 className="sm:text-3xl font-bold text-xl text-center pt-4 pb-8 underline underline-offset-4">
         Frequently Asked Questions
       </h2>
       <div className="space-y-4">

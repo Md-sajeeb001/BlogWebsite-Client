@@ -41,10 +41,6 @@ const AddBlogs = () => {
     console.log(addBlog);
 
     try {
-      // const { data } = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/blogs`,
-      //   addBlog
-      // );
       const { data } = await axiosSeruce.post("/blogs", addBlog);
       if (data) {
         toast.success("Blog Added Successfully!");

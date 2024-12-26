@@ -73,7 +73,7 @@ const Register = () => {
   };
 
   return (
-    <div className="border max-w-5xl mx-auto rounded-xl mt-14">
+    <div className="border max-w-5xl mx-auto rounded-xl mb-8 mt-16 sm:mt-14">
       <h2 className="text-center font-bold text-5xl pt-4">Register Now!</h2>
       <div className="form-control px-8 mt-6">
         <button
@@ -84,11 +84,11 @@ const Register = () => {
         </button>
       </div>
       <div className="divider px-8">or</div>
-      <div className="w-full sm:flex items-center justify-center gap-8">
-        <div className="w-1/2 ">
+      <div className="w-full sm:flex items-center justify-center gap-5">
+        <div className="sm:w-1/2 ">
           <Lottie className="w-full" animationData={cycelAnimi}></Lottie>
         </div>
-        <div className="w-1/2 ">
+        <div className="sm:w-1/2 ">
           <form onSubmit={handelSubmit} className="w-full card-body">
             <div className="form-control">
               <label className="label">

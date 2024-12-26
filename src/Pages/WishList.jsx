@@ -12,16 +12,8 @@ const WishList = () => {
   useEffect(() => {
     const fetchAllwishlist = async () => {
       try {
-        // const { data } = await axios.get(
-        //   `${import.meta.env.VITE_API_URL}/wishlists/${user?.email}`,
-        //   { withCredentials: true }
-        // );
-        // console.log(data);
-        // setWishlist(data);
-
         const { data } = await axiosSecure.get(`/wishlists/${user?.email}`);
         setWishlist(data);
-        // .then((res) => setWishlist(res.data));
       } catch (err) {
         if (err) {
           toast.error("An unknown error occurred while loading users");
@@ -35,7 +27,7 @@ const WishList = () => {
   console.log(wishlist);
 
   return (
-    <section className="container px-4 mx-auto my-12">
+    <section className="container px-4 mx-auto my-14">
       <div className="flex items-center gap-x-3">
         <h2 className="text-lg font-medium text-gray-800 ">My Wishlist</h2>
         <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">

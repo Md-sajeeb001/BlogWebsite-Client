@@ -18,12 +18,12 @@ const UpdateBlog = () => {
           `${import.meta.env.VITE_API_URL}/blog/${id}`
         );
         setBlog(data);
+        setStartDate(new Date(data.deadline));
         // navigate("/");
       } catch (err) {
         console.log(err.message);
       }
     };
-    // setStartDate(new Date());
     fetchBlog();
   }, [id]);
 
@@ -51,6 +51,7 @@ const UpdateBlog = () => {
     const blogUrl = form.blogUrl.value;
     const author = form.author.value;
     const authorUrl = form.authorUrl.value;
+    const deadline = startDate;
 
     const updateBlog = {
       email,
@@ -61,7 +62,7 @@ const UpdateBlog = () => {
       blogUrl,
       author,
       authorUrl,
-      deadline: startDate,
+      deadline,
     };
 
     try {

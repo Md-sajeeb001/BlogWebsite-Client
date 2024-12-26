@@ -27,7 +27,7 @@ const RecentBlogs = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center py-10 underline">
+      <h2 className="text-3xl font-bold text-center sm:py-10 py-6 underline">
         Recent Blogs
       </h2>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">

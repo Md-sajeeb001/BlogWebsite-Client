@@ -1,104 +1,150 @@
 import { useEffect, useState } from "react";
-// import UseAuth from "../Hooks/UseAuth";
-import axios from "axios";
-import FeaturedBlogTabel from "../Components/FeaturedBlogTabel";
+import {
+  useReactTable,
+  getCoreRowModel,
+  getSortedRowModel,
+  flexRender,
+} from "@tanstack/react-table";
+import { AiOutlineUp, AiOutlineDown } from "react-icons/ai";
+// import Loading from "../Home/Loading";
+import { Link } from "react-router-dom";
+import UseAxiosInstance from "../Hooks/UseAxiosInstance";
+import UseAuth from "../Hooks/UseAuth";
 
 const FeaturedBlogs = () => {
-  const [featured, setFeatured] = useState(null);
+  const [blogs, setBlogs] = useState([]);
+  // const [loading, setLoading] = useState(true);
+  const [sorting, setSorting] = useState([]);
+  const axiosSecure = UseAxiosInstance();
+  const { loading, setLoading } = UseAuth();
 
   useEffect(() => {
-    const fetchAllFeatured = async () => {
+    const fetchBlogs = async () => {
       try {
-        const { data } = await axios.get(
-          `${import.meta.env.VITE_API_URL}/blogs`
-        );
-        // const longestBlog = data.reduce((longest, current) => {
-        //   if (longest?.title?.length > current?.title?.length) {
-        //     return current;
-        //   } else {
-        //     return longest;
-        //   }
-        // });
+        const { response } = await axiosSecure.get(`/blogs`);
 
-        // const longest = data.reduce((longestDes, current) => {
-        //   return current?.title?.length > longestDes?.title?.length
-        //     ? current
-        //     : longestDes;
-        // });
-
-        // let count = 0;
-        // const longest = data.filter(blog=> blog?.title?.length >  count?.title?.length);
-
-        console.log(data);
-        setFeatured(data);
-      } catch (err) {
-        console.log(err.message);
+        const sortedBlogs = response
+          .map((blog) => ({
+            ...blog,
+            wordCount: blog.longDescription
+              ? blog.longDescription.split(" ").length
+              : 0,
+          }))
+          .sort((a, b) => b.wordCount - a.wordCount)
+          .slice(0, 10);
+        setBlogs(sortedBlogs);
+        // setLoading(false);
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        // setLoading(false);
       }
     };
+    fetchBlogs();
+  }, [axiosSecure]);
 
-    fetchAllFeatured();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const columns = [
+    {
+      accessorKey: "rank",
+      header: "Rank",
+      cell: (info) => info.row.index + 1,
+    },
+    {
+      accessorKey: "blogTitle",
+      header: "Title",
+      cell: (info) => {
+        const title = info.getValue();
+        const blogId = info.row.original._id;
+        // return (
+        // <Link title={title} to={`/blog-details/${blogId}`}>
+        //   {title.length > 30 ? `${title.slice(0, 30)}`... : title}
+        // </Link>
+        // );
+      },
+    },
+    {
+      accessorKey: "authorName",
+      header: "Author",
+    },
+    {
+      accessorKey: "wordCount",
+      header: "Word Count",
+    },
+    {
+      accessorKey: "createdAt",
+      header: "Created At",
+      cell: (info) =>
+        new Date(info.getValue()).toLocaleDateString("en-US", {
+          year: "numeric",
+          month: "long",
+          day: "2-digit",
+        }),
+    },
+  ];
 
-  console.log(featured);
+  const table = useReactTable({
+    data: blogs,
+    columns,
+    state: { sorting },
+    onSortingChange: setSorting,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+  });
+
+  // if (loading) {
+  //   return <Loading />;
+  // }
 
   return (
-    <section className="container px-4 mx-auto my-12">
-      <div className="flex items-center gap-x-3">
-        <h2 className="text-lg font-medium text-gray-800 ">Featured Blogs</h2>
-        <span className="px-3 py-1 text-xs text-blue-600 bg-blue-100 rounded-full ">
-          {featured?.length} Featured Blogs
-        </span>
-      </div>
-
-      <div className="flex flex-col mt-6">
-        <div className="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div className="overflow-hidden border border-gray-200  md:rounded-lg">
+    <div className="w-11/12 md:w-10/12 mx-auto mt-10">
+      {/* Table */}
+      <div className="flex flex-col">
+        <div className="overflow-x-auto">
+          <div className="p-1.5 min-w-full inline-block align-middle">
+            <div className="overflow-hidden border border-gray-200 rounded-lg">
               <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <div className="flex items-center gap-x-3">
-                        <span>author</span>
-                      </div>
-                    </th>
-                    <th
-                      scope="col"
-                      className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <div className="flex items-center gap-x-3">
-                        <span>Email</span>
-                      </div>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      <button className="flex items-center gap-x-2">
-                        <span>title</span>
-                      </button>
-                    </th>
-
-                    <th
-                      scope="col"
-                      className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500"
-                    >
-                      Category
-                    </th>
-
-                    <th className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500">
-                      Published
-                    </th>
-                  </tr>
+                <thead>
+                  {table.getHeaderGroups().map((headerGroup) => (
+                    <tr key={headerGroup.id}>
+                      {headerGroup.headers.map((header) => (
+                        <th
+                          key={header.id}
+                          onClick={header.column.getToggleSortingHandler()}
+                          className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase cursor-pointer"
+                        >
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          {header.column.getIsSorted() ? (
+                            header.column.getIsSorted() === "asc" ? (
+                              <AiOutlineUp className="inline-block ml-1" />
+                            ) : (
+                              <AiOutlineDown className="inline-block ml-1" />
+                            )
+                          ) : null}
+                        </th>
+                      ))}
+                    </tr>
+                  ))}
                 </thead>
-                <tbody className="bg-white divide-y divide-gray-200 ">
-                  {featured?.map((fetrd) => (
-                    <FeaturedBlogTabel key={fetrd._id} fetrd={fetrd} />
+                <tbody className="divide-y divide-gray-200">
+                  {table.getRowModel().rows.map((row) => (
+                    <tr
+                      key={row.id}
+                      className="hover:bg-gray-50 transition duration-200"
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <td
+                          key={cell.id}
+                          className="px-6 py-4 whitespace-nowrap text-sm text-gray-800"
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </td>
+                      ))}
+                    </tr>
                   ))}
                 </tbody>
               </table>
@@ -106,7 +152,7 @@ const FeaturedBlogs = () => {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -28,10 +28,10 @@ const AllBlogs = () => {
   }, [filter, search]);
 
   return (
-    <div className="pt-10">
+    <div className="pt-12">
       <div className="w-full">
-        <div className="w-full flex items-center justify-between gap-5">
-          <div className="w-1/2">
+        <div className="w-full flex-col-reverse sm:flex sm:items-center sm:justify-between gap-5">
+          <div className="sm:w-1/2 w-40">
             <label className="label">
               <span className="label-text">Filter By Category</span>
             </label>
@@ -56,9 +56,9 @@ const AllBlogs = () => {
             </select>
           </div>
 
-          <div className="w-1/2">
+          <div className="sm:w-1/2 w-full">
             <label className="label">
-              <span className="label-text">{""}</span>
+              <span className="label-text">Search</span>
             </label>
             <div className="w-full  border rounded-lg focus-within:ring focus-within:ring-opacity-40 focus-within:border-blue-400 focus-within:ring-blue-300">
               <label className="input input-bordered flex items-center gap-2">
@@ -86,7 +86,7 @@ const AllBlogs = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-5 pt-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-10 gap-5 pt-8">
         {blogs?.map((blog) => (
           <LazyLoad key={blog._id} height={200} once debounce={500}>
             <BlogCard blog={blog}></BlogCard>
