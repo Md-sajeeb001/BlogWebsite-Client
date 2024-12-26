@@ -2,6 +2,7 @@ import Banner from "../Components/Banner";
 import FAQ from "../Components/FAQ";
 import NewsLetter from "../Components/NewsLetter";
 import RecentBlogs from "../Components/RecentBlogs";
+import Warning from "../Components/Warning";
 
 const Home = () => {
   return (
@@ -17,6 +18,9 @@ const Home = () => {
       </div>
       <div>
         <FAQ></FAQ>
+      </div>
+      <div>
+        <Warning></Warning>
       </div>
     </div>
   );

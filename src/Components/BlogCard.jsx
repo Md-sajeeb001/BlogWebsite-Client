@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import { format } from "date-fns";
+import { motion } from "framer-motion";
 
 const BlogCard = ({ blog }) => {
   const {
@@ -63,21 +64,33 @@ const BlogCard = ({ blog }) => {
         <p>{shortdescription}</p>
         <div className="flex items-center gap-4">
           <Link to={`/blogDetails/${_id}`}>
-            <button className="btn bg-blue-500 hover:bg-blue-800 text-white">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn bg-blue-500 hover:bg-blue-800 text-white"
+            >
               Details
-            </button>
+            </motion.button>
           </Link>
           {user ? (
             <Link onClick={handelWishList}>
-              <button className="btn bg-blue-500 hover:bg-blue-800 text-white">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn bg-blue-500 hover:bg-blue-800 text-white"
+              >
                 Wishlist
-              </button>
+              </motion.button>
             </Link>
           ) : (
             <Link to="/signIn">
-              <button className="btn bg-blue-500 hover:bg-blue-800 text-white">
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="btn bg-blue-500 hover:bg-blue-800 text-white"
+              >
                 Wishlist
-              </button>
+              </motion.button>
             </Link>
           )}
         </div>

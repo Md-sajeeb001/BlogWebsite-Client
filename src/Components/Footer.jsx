@@ -1,20 +1,31 @@
 import { Link } from "react-router-dom";
 import logo from "../assets/logo.png";
+import { motion } from "framer-motion";
+import UseAuth from "../Hooks/UseAuth";
 
 const Footer = () => {
+  const { user } = UseAuth();
+
   return (
     <footer className="bg-white shadow-sm">
       <hr />
       <div className="container px-6 py-8 mx-auto">
         <div className="flex flex-col items-center text-center">
           <div className="flex gap-2 items-center">
-            <div className="divider">
-              <img className="w-24" src={logo} alt="logo" />
-            </div>
-              <span>Cycling</span>
+            <Link to="/">
+              <motion.img
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-36 sm:px-6"
+                src={logo}
+                alt="logo"
+              />
+            </Link>
+            {/* <div className="divider">Default</div> */}
+            <span>Cycling</span>
           </div>
 
-          <div className="flex flex-wrap justify-center mt-6 -mx-4">
+          {/* <div className="flex flex-wrap justify-center mt-6 -mx-4">
             <Link
               to="/"
               className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
@@ -33,14 +44,14 @@ const Footer = () => {
               About{" "}
             </Link>
 
-            <a
+            <Link to=""
               href="#"
               className="mx-4 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 "
               aria-label="Reddit"
             >
               {" "}
-              Teams{" "}
-            </a>
+              NewsLetter{" "}
+            </Link>
 
             <a
               href="#"
@@ -59,6 +70,45 @@ const Footer = () => {
               {" "}
               Cookies{" "}
             </a>
+          </div> */}
+
+          <div className="flex gap-5 px-10 py-4 ">
+            <Link
+              className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
+              to="/"
+            >
+              Home
+            </Link>
+            <Link
+              className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
+              to="/allBlogs"
+            >
+              All blogs
+            </Link>
+            <Link
+              className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
+              to="/featured"
+            >
+              Featured Blogs
+            </Link>
+            <div>
+              {user && (
+                <div className="space-x-5">
+                  <Link
+                    className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
+                    to="/addBlog"
+                  >
+                    Add Blog
+                  </Link>
+                  <Link
+                    className="text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500"
+                    to="/wishlist"
+                  >
+                    Wishlist
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
         </div>
 

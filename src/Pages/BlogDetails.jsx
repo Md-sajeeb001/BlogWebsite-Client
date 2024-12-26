@@ -1,6 +1,4 @@
 import axios from "axios";
-// import { format } from "date-fns";
-// import { format } from "date-fns";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
@@ -111,8 +109,10 @@ const BlogDetails = () => {
               </div>
             </div>
 
-            <div className="mt-3 text-xs">{shortdescription}</div>
-            <article className="pt-4  progress-bar">{longDescription}</article>
+            <div className="pt-4">
+              <span className=" text-xs">{shortdescription}</span>
+              <p className="pt-6">{longDescription}</p>
+            </div>
             {user?.email === email && (
               <Link
                 to={`/updateBlog/${_id}`}

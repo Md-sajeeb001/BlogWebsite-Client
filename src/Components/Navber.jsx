@@ -11,7 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import logo from "../assets/Logo.png";
 import { FaUserCircle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import { motion } from "motion/react";
 
@@ -64,7 +64,13 @@ function Navber() {
               }}
             >
               <Link to="/">
-                <img className="w-24" src={logo} alt="logo" />
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-36 sm:px-6"
+                  src={logo}
+                  alt="logo"
+                />
               </Link>
             </Typography>
 
@@ -95,15 +101,40 @@ function Navber() {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: "block", md: "none" } }}
               >
-                <div className="flex flex-col gap-5  px-10 py-4">
-                  <Link to="/">Home</Link>
-                  <Link to="/allBlogs">All blogs</Link>
-                  <Link to="/featured">Featured Blogs</Link>
+                <div className="flex flex-col gap-5 px-10 py-4">
+                  <NavLink
+                    className="transition-colors duration-300 hover:text-black"
+                    to="/"
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    className="transition-colors duration-300 hover:text-black"
+                    to="/allBlogs"
+                  >
+                    All blogs
+                  </NavLink>
+                  <NavLink
+                    className="transition-colors duration-300 hover:text-black"
+                    to="/featured"
+                  >
+                    Featured Blogs
+                  </NavLink>
                   <div>
                     {user && (
                       <div>
-                        <Link to="/addBlog">Add Blog</Link>
-                        <Link to="/wishlist">Wishlist</Link>
+                        <NavLink
+                          className="transition-colors duration-300 hover:text-black"
+                          to="/addBlog"
+                        >
+                          Add Blog
+                        </NavLink>
+                        <NavLink
+                          className="transition-colors duration-300 hover:text-black"
+                          to="/wishlist"
+                        >
+                          Wishlist
+                        </NavLink>
                       </div>
                     )}
                   </div>
@@ -127,29 +158,50 @@ function Navber() {
               }}
             >
               <Link to="/">
-                <motion.div
-                  whileHover={{ scale: 1.2 }}
-                  whileTap={{ scale: 0.8 }}
-                  className="logo"
-                  style={{
-                    width: "100px",
-                    height: "100px",
-                  }}
-                >
-                  <img className="w-24" src={logo} alt="logo" />
-                </motion.div>
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="w-36 sm:px-6"
+                  src={logo}
+                  alt="logo"
+                />
               </Link>
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <div className="flex items-center space-x-8">
-                <Link to="/">Home</Link>
-                <Link to="/featured">Featured Blogs</Link>
-                <Link to="/allBlogs">All blogs</Link>
+                <NavLink
+                  className="transition-colors duration-300 hover:text-black"
+                  to="/"
+                >
+                  Home
+                </NavLink>
+                <NavLink
+                  className="transition-colors duration-300 hover:text-black"
+                  to="/featured"
+                >
+                  Featured Blogs
+                </NavLink>
+                <NavLink
+                  className="transition-colors duration-300 hover:text-black"
+                  to="/allBlogs"
+                >
+                  All blogs
+                </NavLink>
                 <div>
                   {user && (
                     <div className=" space-x-8">
-                      <Link to="/addBlog">Add Blog</Link>
-                      <Link to="/wishlist">Wishlist</Link>
+                      <NavLink
+                        className="transition-colors duration-300 hover:text-black"
+                        to="/addBlog"
+                      >
+                        Add Blog
+                      </NavLink>
+                      <NavLink
+                        className="transition-colors duration-300 hover:text-black"
+                        to="/wishlist"
+                      >
+                        Wishlist
+                      </NavLink>
                     </div>
                   )}
                 </div>
@@ -211,13 +263,6 @@ function Navber() {
                   </Link>
                 </div>
               )}
-
-              {/* <div className="flex items-center justify-center sm:gap-6 gap-1">
-                {!user && (
-                 
-                )}
-               
-              </div> */}
             </Box>
           </Toolbar>
         </Container>
