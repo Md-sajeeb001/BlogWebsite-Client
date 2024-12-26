@@ -78,10 +78,22 @@ const BlogDetails = () => {
                     placeholder="comment here"
                   ></textarea>
                 </div>
-                <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
-                  <FaLocationArrow className="font-bold text-lg"></FaLocationArrow>{" "}
-                  Comment
-                </button>
+                <div>
+                  {user ? (
+                    <button className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4">
+                      <FaLocationArrow className="font-bold text-lg"></FaLocationArrow>{" "}
+                      Comment
+                    </button>
+                  ) : (
+                    <Link
+                      to="/signIn"
+                      className="btn bg-blue-500 hover:bg-blue-800 text-white mt-4"
+                    >
+                      <FaLocationArrow className="font-bold text-lg"></FaLocationArrow>{" "}
+                      Comment
+                    </Link>
+                  )}
+                </div>
               </div>
             )}
           </form>
@@ -104,8 +116,12 @@ const BlogDetails = () => {
                 </div>
               </div>
               <div className="">
-                <p className="text-xs font-normal sm:font-bold sm:text-lg">Authore: {author}</p>
-                <p className="text-xs font-normal sm:font-bold sm:text-lg">Category: {category}</p>
+                <p className="text-xs font-normal sm:font-bold sm:text-lg">
+                  Authore: {author}
+                </p>
+                <p className="text-xs font-normal sm:font-bold sm:text-lg">
+                  Category: {category}
+                </p>
               </div>
             </div>
 
