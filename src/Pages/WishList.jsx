@@ -3,17 +3,20 @@ import WishListTabel from "../Components/WishListTabel";
 import UseAuth from "../Hooks/UseAuth";
 import toast from "react-hot-toast";
 import UseAxiosInstance from "../Hooks/UseAxiosInstance";
+import Loading from "../Components/Loading";
 
 const WishList = () => {
   const [wishlist, setWishlist] = useState(null);
   const { user } = UseAuth();
   const axiosSecure = UseAxiosInstance();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllwishlist = async () => {
       try {
         const { data } = await axiosSecure.get(`/wishlists/${user?.email}`);
         setWishlist(data);
+        setLoading(false);
       } catch (err) {
         if (err) {
           toast.error("An unknown error occurred while loading users");
@@ -24,7 +27,9 @@ const WishList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  console.log(wishlist);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <section className="container px-4 mx-auto my-14">

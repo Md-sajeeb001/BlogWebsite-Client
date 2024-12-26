@@ -2,12 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import BlogCard from "../Components/BlogCard";
 import toast from "react-hot-toast";
+import Loading from "../Components/Loading";
 // import LazyLoad from "react-lazyload";
 
 const AllBlogs = () => {
   const [blogs, setBlogs] = useState(null);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchAllBlogs = async () => {
@@ -18,6 +20,7 @@ const AllBlogs = () => {
           }/blogs?filter=${filter}&search=${search}`
         );
         setBlogs(data);
+        setLoading(false);
       } catch (err) {
         if (err) {
           toast.error("An unknown error occurred while loading users");
@@ -26,6 +29,10 @@ const AllBlogs = () => {
     };
     fetchAllBlogs();
   }, [filter, search]);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="pt-12">
@@ -88,9 +95,7 @@ const AllBlogs = () => {
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-5 md:gap-10 gap-5 pt-8">
         {blogs?.map((blog) => (
-          // <LazyLoad height={200} once debounce={500}>
           <BlogCard key={blog._id} blog={blog}></BlogCard>
-          // </LazyLoad>
         ))}
       </div>
     </div>
