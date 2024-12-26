@@ -1,6 +1,14 @@
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
+
 const Warning = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="pt-8 pb-6">
+    <div data-aos="fade-up" className="pt-8 pb-6">
       <h2 className="sm:text-3xl text-xl text-center underline font-bold sm:pt-4 pb-8">
         Warning of Fraudulent Offers Online
       </h2>

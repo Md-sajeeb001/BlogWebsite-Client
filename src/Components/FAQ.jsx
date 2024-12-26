@@ -1,11 +1,21 @@
+import { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 const FAQ = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="sm:mt-14 mt-8 sm:mb-6">
+    <div data-aos="fade-up" className="sm:mt-14 mt-8 sm:mb-6">
       <h2 className="sm:text-3xl font-bold text-xl text-center pt-4 pb-8 underline underline-offset-4">
         Frequently Asked Questions
       </h2>
       <div className="space-y-4">
-        <div className="collapse rounded-md collapse-plus bg-base-200">
+        <div
+          data-aos="fade-up"
+          className="collapse rounded-md collapse-plus bg-base-200"
+        >
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-xl font-medium text-[#535555]">
             What is the warranty policy for BOLD bikes?
@@ -24,7 +34,10 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-base-200">
+        <div
+          data-aos="fade-up"
+          className="collapse rounded-md collapse-plus bg-base-200"
+        >
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium text-[#535555]">
             What is the status of my warranty claim?
@@ -36,7 +49,10 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-base-200">
+        <div
+          data-aos="fade-up"
+          className="collapse rounded-md collapse-plus bg-base-200"
+        >
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium text-[#535555]">
             How do I wash and care for my BOLD apparel?
@@ -53,7 +69,10 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-base-200">
+        <div
+          data-aos="fade-up"
+          className="collapse rounded-md collapse-plus bg-base-200"
+        >
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium text-[#535555]">
             What bike size do I need?
@@ -70,7 +89,10 @@ const FAQ = () => {
             </p>
           </div>
         </div>
-        <div className="collapse collapse-plus bg-base-200">
+        <div
+          data-aos="fade-up"
+          className="collapse rounded-md collapse-plus bg-base-200"
+        >
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium text-[#535555]">
             Can a carbon bike frame be repaired if damaged?

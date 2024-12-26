@@ -71,7 +71,7 @@ const BlogDetails = () => {
               " "
             ) : (
               <div>
-                <div className="w-full border-2 border-blue-500 outline-none  p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
+                <div className="w-full border-2 border-blue-500 outline-none p-2 rounded-md focus:border-blue-500 focus:outline-none mt-8">
                   <textarea
                     name="textArea"
                     className="w-full px-5 py-4 outline-none "

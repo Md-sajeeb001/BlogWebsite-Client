@@ -36,8 +36,6 @@ const UpdateBlog = () => {
     blogUrl,
     author,
     authorUrl,
-    // _id,
-    // deadline: startDate,
   } = blog || {};
 
   const handelSubmit = async (e) => {

@@ -1,9 +1,14 @@
 import { Button } from "@mui/material";
 import bannderImg from "../assets/banner.jpg";
-// import { Typewriter } from "react-simple-typewriter";
 import TypeWritter from "./TypeWritter";
-
+import { useEffect } from "react";
+import "aos/dist/aos.css";
+import AOS from "aos";
 const Banner = () => {
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
     <div
       className="rounded-md"
@@ -16,7 +21,10 @@ const Banner = () => {
     >
       <div className="flex flex-col items-center sm:space-y-6 space-y-3 justify-center pt-[150px] md:pt-[100px] lg:pt-[160px] my-auto lg:max-w-3xl md:max-w-xl max-w-sm mx-auto text-center">
         <TypeWritter></TypeWritter>
-        <h4 className="sm:text-xl text-sm font-normal sm:font-bold sm:leading-9 text-black leading-5">
+        <h4
+          data-aos="zoom-out-up"
+          className="sm:text-xl text-sm font-normal sm:font-bold sm:leading-9 text-black leading-5"
+        >
           Cyceling safe, and how Remco could have been saved by training in
           Carrick
         </h4>

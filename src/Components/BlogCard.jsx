@@ -6,13 +6,15 @@ import { Link } from "react-router-dom";
 import UseAuth from "../Hooks/UseAuth";
 import { format } from "date-fns";
 import { motion } from "framer-motion";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const BlogCard = ({ blog }) => {
   const {
     _id,
     shortdescription,
     blogUrl,
-    // email,
     title,
     deadline,
     category,
@@ -22,7 +24,6 @@ const BlogCard = ({ blog }) => {
   } = blog || {};
 
   const { user } = UseAuth();
-
   const newWishlist = {
     blogId: _id,
     shortdes: shortdescription,
@@ -36,6 +37,9 @@ const BlogCard = ({ blog }) => {
     blogLongDsc: longDescription,
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
   const handelWishList = async () => {
     try {
       const { data } = await axios.post(
@@ -54,7 +58,7 @@ const BlogCard = ({ blog }) => {
   };
 
   return (
-    <div className="card card-compact bg-base-100 shadow-sm">
+    <div data-aos="fade-up" className="card card-compact bg-base-100 shadow-sm">
       <figure className="w-full h-[300px]">
         <img className="w-full h-full object-cover" src={blogUrl} />
       </figure>

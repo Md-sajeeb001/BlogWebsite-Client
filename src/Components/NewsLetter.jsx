@@ -1,4 +1,7 @@
 import toast from "react-hot-toast";
+import "aos/dist/aos.css";
+import AOS from "aos";
+import { useEffect } from "react";
 
 const NewsLetter = () => {
   const handelSubmit = (e) => {
@@ -12,8 +15,15 @@ const NewsLetter = () => {
     }
   };
 
+  useEffect(() => {
+    AOS.init();
+  }, []);
+
   return (
-    <div className="px-6 rounded-lg py-4 mt-12 text-blue-600 bg-blue-100 max-w-2xl  mx-auto ">
+    <div
+      data-aos="zoom-in"
+      className="px-6 rounded-lg py-4 mt-12 text-blue-600 bg-blue-100 max-w-2xl  mx-auto "
+    >
       <form onSubmit={handelSubmit}>
         <div className=" w-full mt-4">
           <div className="flex flex-col items-center text-center text-black space-y-3">
