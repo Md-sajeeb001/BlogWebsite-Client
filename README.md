@@ -30,7 +30,7 @@ Welcome to the Cycling Blog website! This platform is dedicated to cycling enthu
 
 ## 🛠️ Setup and Installation
 
-To run this project locally on your machine, follow these steps: - `npm install`
+To run this project locally on your machine, follow these steps: - `npm install` / - `npm run dev`
 
 1. **Clone the repository:**
    ```bash
