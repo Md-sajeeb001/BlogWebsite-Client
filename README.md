@@ -30,8 +30,8 @@ Welcome to the Cycling Blog website! This platform is dedicated to cycling enthu
 
 ## 🛠️ Setup and Installation
 
-To run this project locally on your machine, follow these steps: npm install
+To run this project locally on your machine, follow these steps: - `npm install`
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/Md-sajeeb001/BlogWebsite-Client.git
