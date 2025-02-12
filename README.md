@@ -3,7 +3,7 @@
 Welcome to the Cycling Blog website! This platform is dedicated to cycling enthusiasts and aims to provide a wide range of articles on cycling tips, gear reviews, training, and exciting cycling adventures.
 
 ## 🖼️ Screenshot
-![Screenshot_113]([https://github.com/user-attachments/assets/8bbd4f26-815c-4795-96b3-9da1a2d3dd70](https://i.ibb.co.com/4n5QJ6fF/Screenshot-218.png))
+![Screenshot_113](https://i.ibb.co.com/4n5QJ6fF/Screenshot-218.png)
 
 
 ## 🚀 Technologies Used
